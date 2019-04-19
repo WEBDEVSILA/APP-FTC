@@ -1,0 +1,50 @@
+<!--
+  Generated template for the RequestListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Solicitudes pendientes</ion-title>
+    <small *ngIf="loaded">{{ userName }}</small>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <div class="table-container">
+            <div class="table">
+                <div class="h-scroll-columns">
+                    <table class="inner-table">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Centro de costo</th>
+                                <th>Usuario solicitante</th>
+                                <th>Valor</th>
+                                <th>Tipo</th>
+                                <th>Referencia</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let request of requestList" (click)="!isButtonDisplay(request.id) ? goToDetail(request) : null">
+                                <td>{{ request.date }}</td>
+                                <td>{{ request.costCenter }}</td>
+                                <td>{{ request.userRequest }}</td>
+                                <td>{{ request.value | customCurrencyDecorator}} <span *ngIf="request.value > 0">{{ request.currency }}</span></td>
+                                <td>{{ request.type }}</td>
+                                <td>{{ request.referenceNumber }}</td>
+                                <td><button id="btn-rquest-{{ request.id }}" (click)="goToDetail(request)" class="btn-review" ion-button color="primary" round small icon-start><ion-icon name="paper"></ion-icon>Revisar</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+      </ion-card>
+</ion-content>

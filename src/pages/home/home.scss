@@ -1,3 +1,18 @@
 page-home {
-
+    .toolbar-content-ios{
+        text-align: center;
+        ion-title {
+            &.title-ios{
+                top: -11px;
+                left: -30px;
+                @media screen and (min-width: 568px) {
+                    top: -13px;
+                }
+            }
+        }
+    }
+    background-color: color($colors, background);
+    menu {
+        padding: 0;
+    }
 }

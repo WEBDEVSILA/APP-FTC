@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "972683959747",
+    "firebase_url": "https://ftc-ionic-a0cb3.firebaseio.com",
+    "project_id": "ftc-ionic-a0cb3",
+    "storage_bucket": "ftc-ionic-a0cb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:972683959747:android:1caa76a7fe451147",
+        "android_client_info": {
+          "package_name": "com.co.foxtelecolombia.aprob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "972683959747-cbdgeomfgeijso47ovi8rvtd2bkklgdi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDw3LYGVhCTWfD-uxs77eV4t0u514eMCKc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "972683959747-cbdgeomfgeijso47ovi8rvtd2bkklgdi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

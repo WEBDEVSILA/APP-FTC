@@ -1,0 +1,108 @@
+page-request-list {
+    .toolbar-content-ios{
+        text-align: center;
+        ion-title {
+            &.title-ios{
+                top: -11px;
+                left: 30px;
+                @media screen and (min-width: 600px) {
+                    top: -13px;
+                }
+            }
+        }
+    }
+    ion-content {
+        .scroll-content{
+            padding: 0 !important;
+            ion-card {
+                &.card-md {
+                    margin: 0;
+                    width: 100%;
+                }
+                .table-container {
+                    .table {
+                        display: grid;
+                        zoom: 1;
+                        overflow-y: auto;
+                        overflow-x: hidden;
+                        overflow-x: hidden;
+                        &::-webkit-scrollbar-track {
+                            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+                            border-radius: 10px;
+                            background-color: #F5F5F5;
+                        }
+                        &::-webkit-scrollbar {
+                            width: 8px;
+                            background-color: #F5F5F5;
+                        }
+                        &::-webkit-scrollbar-thumb {
+                            border-radius: 10px;
+                            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+                            box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+                            background-color: #427ee6;
+                        }
+                        td {
+                            white-space: nowrap;
+                            border-bottom: 1px solid #ddd;
+                            padding: 8px;
+                            font-size: 12px;
+                            font-weight: 600;
+                            color: #9b9b9b;
+                        }
+                        th {
+                            white-space: nowrap;
+                            border-bottom: 1px solid #ddd;
+                            border-top: 1px solid #ddd;
+                            padding: 8px;
+                            font-family: DTLArgoT;
+                            font-size: 12px;
+                            font-weight: bold;
+                            line-height: 2.0;
+                            text-align: left;
+                            color: #59626d;
+                        }
+    
+                        .btn-review{
+                            @media screen and (max-width: 425px) {
+                                display: none;
+                             }
+                        }
+                        .fixed-column {
+                            display: inline-block;
+                            zoom: 1;
+                            *display: inline;
+                            vertical-align: top;
+                        }
+                        .h-scroll-columns {
+                            display: inline-block;
+                            zoom: 1;
+                            *display: inline;
+                            overflow-y: hidden;
+                            overflow-x: scroll;
+                            vertical-align: top;
+                            &::-webkit-scrollbar-track {
+                                display: none;
+                            }
+                            &::-webkit-scrollbar {
+                                display: none;
+                            }
+                            &::-webkit-scrollbar-thumb {
+                                display: none;
+                            }
+                        }
+                        .freeze-table {
+                            z-index: 2;
+                        }
+                        .inner-table {
+                            overflow: hidden;
+                        }
+                        table {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

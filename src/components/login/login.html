@@ -1,0 +1,31 @@
+<div class="login">
+  <img [src]="logoPath">
+  <ion-list>
+      <ion-item>
+        <ion-label stacked>Usuario</ion-label>
+        <ion-input type="text" [(ngModel)]="userName"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label stacked>Contraseña <ion-icon name="eye" (click)="showPwd()"></ion-icon></ion-label>
+        <ion-input [type]="showPassword ? 'text' : 'password'" [(ngModel)]="password" autocomplete="off" (keyup)="onKeyup($event)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Recordar contraseña</ion-label>
+        <ion-checkbox [(ngModel)]="rememberPwd" (ngModelChange)="$event ? password = password : password = ''"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <a (click)="forgotPwd()">Olvidé mi contraseña</a>
+      </ion-item>
+    </ion-list>
+    <button ion-button color="light" round (click)="login()">Ingresar</button>
+    <br>
+    <br>
+    <ion-row>
+      <ion-col>        
+        <a (click)="openPP()">Políticas de Privacidad</a>          
+      </ion-col>
+      <ion-col>        
+        <a (click)="openTC()">Terminos y Condiciones</a>          
+      </ion-col>
+    </ion-row>
+</div>

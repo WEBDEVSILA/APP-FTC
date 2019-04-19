@@ -1,0 +1,64 @@
+<!--
+  Generated template for the RequestDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalle</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-card>
+      <h1>Solicitud de: {{ request.type }} - {{ request.referenceNumber }}</h1>
+      <div class="header-request">
+        <div class="title">
+          <h3>{{ request.date }} - {{ request.time }}</h3>
+          <p>Centro de costo: {{ request.costCenter }}</p>
+        </div>
+        <div *ngIf="reviewers.length !== 0" class="reviewer-container">
+          <small>Autorizadores</small>
+          <div class="item" *ngFor="let reviewer of reviewers">
+            <div [ngSwitch]="reviewer.approve" class="icon-status">
+              <ion-icon *ngSwitchCase="true" name="checkmark"></ion-icon>
+              <ion-icon *ngSwitchCase="false" name="close"></ion-icon>
+              <ion-icon *ngSwitchDefault name="radio-button-on"></ion-icon>
+            </div>
+            <p>{{ reviewer.reviewerName }}</p>
+          </div>
+        </div>
+      </div>
+      <p class="detail" [innerHTML]="request.emailMessage"></p>
+      <table class="inner-table">
+        <tbody>
+          <tr>
+            <td>Solicitante:</td>
+            <td>{{ request.userRequest }}</td>
+          </tr>
+          <tr>
+            <td>Valor:</td>
+            <td>{{ request.value | customCurrencyDecorator }} <span *ngIf="request.value > 0">{{ request.currency }}</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="docs-container">
+        <h2 *ngIf="docs.length > 0">Documentos anexados</h2>
+        <a id="donwloadLink" class="hiden"></a>
+        <div *ngFor="let doc of docs" class="item" (click)="downloadFile(doc)">
+          <ion-icon ios="ios-document" md="md-document"></ion-icon>
+          <a>{{ doc.name }}</a>
+        </div>
+      </div>
+      <div class="button-tools">
+          <button ion-button color="secondary" small (click)="openConfirmAuth()" [disabled]="enableToAuth()">Autorizar</button>
+          <button ion-button color="primary" small (click)="openMessageBox('comment')">Comentar</button>
+          <button ion-button color="danger" small (click)="openMessageBox('reject')">Denegar</button>
+      </div>
+      <div *ngIf="displayMessageBox" class="rejected-container">
+        <textarea id="atNotes" [(ngModel)]="notes" rows="5" placeholder="Observaciones..."></textarea>
+        <button ion-button color="primary" small (click)="send(false)" [disabled]="notes.length <= 3">Enviar</button>
+      </div>
+    </ion-card>
+</ion-content>

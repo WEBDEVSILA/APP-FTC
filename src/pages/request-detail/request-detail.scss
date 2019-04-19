@@ -1,0 +1,134 @@
+page-request-detail {
+    ion-content {
+        .scroll-content{
+            @media screen and (min-width: 768px) {
+                display: grid;
+                flex-direction: column;
+                justify-content: flex-start;
+                justify-content: center;
+                box-sizing: border-box;
+                position: relative;
+                grid-auto-flow: row;
+                vertical-align: middle;
+                min-height: 65vh;
+                width: 100%; 
+            }
+        }
+        ion-card {
+            padding: 25px;
+            @media screen and (min-width: 768px) {
+                min-width: 700px;
+            }
+            .inner-table{
+                font-weight: 200;
+                margin-top: 36px;
+                margin-bottom: 36px;
+                tbody {
+                    tr {
+                        td {
+                            &:nth-child(1) {
+                                font-weight: 400;
+                            }
+                        }
+                    }
+                }
+            }
+            .docs-container{
+                margin: 30px;
+                h2 {
+                    margin-bottom: 6px;
+                }
+                .item{
+                    display: flex;
+                    align-items: center;
+                    font-size: 12px;
+                    padding-left: 10px;
+                    ion-icon{
+                        margin-right: 10px;
+                    }
+                }
+            }
+            .header-request {
+                display: grid;
+                grid-template-columns: 8fr 3fr;
+                margin-bottom: 30px;
+                .reviewer-container {
+                    position: relative;
+                    right: -27px;
+                    top: 10px;
+                    width: 135px;
+                    background-color: aliceblue;
+                    border-radius: 11px 7px;
+                    border: 1px solid aliceblue;
+                    padding: 6px;
+                    small {
+                        font-variant: petite-caps;
+                    }
+                    .item {
+                        display: grid;
+                        grid-template-columns: 1fr 10fr;
+                        grid-gap: 6px;
+                        font-size: 10px;
+                        p {
+                            font-size: 10px;
+                        }
+                        .icon-status{
+                            ion-icon {
+                                &[aria-label="radio button-on"]{
+                                    color: orange;
+                                }
+                                &[aria-label="close"]{
+                                    color: red;
+                                }
+                                &[aria-label="checkmark"]{
+                                    color: green;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .detail {
+                text-align: justify;
+            }
+            .button-tools {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                margin-bottom: 8px;
+                button {
+                    width: 70%;
+                    &:nth-child(2) {
+                        justify-self: center;
+                    }
+                    &:nth-child(3) {
+                        justify-self: end;
+                    }
+                }
+                @media screen and (max-width: 350px) {
+                    grid-template-columns: none;
+                    grid-template-rows: repeat(3, 1fr);
+                    button {
+                        width: 100%;
+                        &:nth-child(2) {
+                            justify-self: initial;
+                        }
+                        &:nth-child(3) {
+                            justify-self: initial;
+                        }
+                    }
+                }
+            }
+            .rejected-container {
+                display: grid;
+                grid-template-rows: 1fr 1fr;
+                textarea {
+                    border: solid color($colors, primary);
+                    resize: none;
+                    padding: 7px;
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+}

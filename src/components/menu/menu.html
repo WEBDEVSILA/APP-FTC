@@ -1,0 +1,12 @@
+<!-- Generated template for the MenuComponent component -->
+<div class="menu" *ngIf="shown">
+    <ion-item-group>
+      <ion-item-divider color="light">Módulos</ion-item-divider>
+      <div *ngFor="let option of menu">
+        <button *ngIf="option.enable" ion-item (click)="goTo(option)">
+            {{ option.name }}
+            <ion-badge item-end>{{ option.count }}</ion-badge>
+        </button>  
+      </div>
+    </ion-item-group>
+</div>
