@@ -38,7 +38,7 @@ export class ApproveRequestProvider {
   getReviewersByReferenceNumber(pReferenceNumber: number): Promise<any>{
     return new Promise<any>((resolve, reject) => {
       this.request.get('/requests/reviewers', {
-        queryParams: {
+        queryParams: { 
           requestNumber: pReferenceNumber,
           userRequestId: this.auth.currentUser.userName
         }}).then((result) => {

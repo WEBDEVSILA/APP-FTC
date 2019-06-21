@@ -4,7 +4,7 @@
     <description>Autorizaciones y presupuestos</description>
     <content src="index.html" />
     <allow-navigation href="http://*/*" />
-    <allow-navigation href="http://*/*" />
+    <allow-navigation href="https://*/*" />
     <allow-navigation href="data:*" />
     <allow-intent href="tel:*" />
     <allow-intent href="sms:*" />

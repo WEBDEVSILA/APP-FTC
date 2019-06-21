@@ -1,5 +1,5 @@
 //productor.comercial@foxtelecolombia.com
-//Foxtc019
+//Foxtc018
 import { ENV } from '@app/env';
 
 export class Properties {
@@ -15,7 +15,8 @@ export class Properties {
             case 'prod':
                 return 'http://190.217.118.237';
             default:
-                return 'http://190.217.118.235:19899';                
+                return 'http://190.217.118.237';
+                //return 'http://168.195.202.3:1975';                
         }
     }
 }
