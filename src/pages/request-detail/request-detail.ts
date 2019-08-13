@@ -156,12 +156,13 @@ export class RequestDetailPage {
         });
       }else{
         const blobUrl = window.URL.createObjectURL(blob);
-        const a = document.getElementById('donwloadLink') as HTMLAnchorElement;
+        //console.log(blobUrl);
+        const a = document.getElementById('donwloadLink') as HTMLAnchorElement;        
         a.href = blobUrl;
         a.download = docRef.name;
         // a.click();
         // window.URL.revokeObjectURL(blobUrl);
-        window.open(blobUrl,'_system','location=yes');
+        window.open(blobUrl,'_system ','location=yes');
         loaderef.dismiss();
       }
     });
