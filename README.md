@@ -1,6 +1,6 @@
 ### FTCAprob
 
-## Correr código
+#### Correr código
 - Clonar repositorio.
 - Abrir terminal.
 - Ejecutar el comando `npm install` para instalar todas las dependencias y librerías.
