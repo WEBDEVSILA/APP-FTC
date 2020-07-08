@@ -108,8 +108,8 @@ export class ApproveRequestProvider {
             const view = new Uint8Array(buffer);
             for (let i = 0; i < len; i++) {
               view[i] = binary.charCodeAt(i);
-            }
-            const blob = new Blob([view], { type: 'application/pdf' });
+            }            
+            const blob = new Blob([view], { type: 'application/pdf' });            
             resolve(blob);
           }
           else{

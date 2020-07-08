@@ -28,18 +28,19 @@ export class AuthenticationProvider {
       const uri = Properties.baseUrl.concat('/rest/$directory/login');
       let pwd = pPassword;
       if (encrypt) {
-        pwd = this.encodePwd(pPassword);
+        pwd = this.encodePwd(pPassword);        
       }
       
       this.request.post(uri,{
         externalEndpoint: true,
         data: [ pUser, pwd.toString() ]
-      }).then(response => {
+      }).then(response => {        
         this.getCurrentUserData().then(() => {
-          this.onAuthenticate.next();
+          this.onAuthenticate.next();          
           resolve(pwd.toString());
         })
       }).catch(error => {
+        
         reject(error);
       });
     });
@@ -74,17 +75,16 @@ export class AuthenticationProvider {
 
   getCurrentUserData(): Promise<any> {
     return new Promise((resolve, reject) =>{
-      const uri = Properties.baseUrl.concat('/rest/$directory/currentUser');
+      const uri = Properties.baseUrl.concat('/rest/$directory/currentUser');      
       this.request.get(uri,{
         externalEndpoint: true
-      }).then(response => {
+      }).then(response => {            
         this.currentUser = response.result;
-        this.onAuthenticate.next();
-        resolve(this.currentUser);
+        this.onAuthenticate.next();        
+        resolve(this.currentUser);        
       }).catch(error => {
         this.onAuthenticate.error(error);
         reject(error);
-
         console.log(error);
         const alert = this.alertCtrl.create({
           title: 'Ups!!',       

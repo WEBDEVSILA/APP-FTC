@@ -109,6 +109,8 @@ export class PushNotificationsProvider {
 
   saveRegisterDevice(pAccountID: string): Promise<boolean>{
     return new Promise<any>((resolve, reject) => {
+
+      console.log(this.FCMToken);
       if(this.FCMToken) {
         this.request.post('/user/device/save', { data: 
           { 
@@ -117,10 +119,12 @@ export class PushNotificationsProvider {
             platform: this.platform.platforms().indexOf('ios') > -1 ? 'ios' : 'android'
           }
         }).then((result) => {
-            if( result[0] && result[0].success ) {
+          if( result[0] && result[0].success ) {              
+              console.log(result);
               resolve(true);
             }
             else{
+              console.log(result);
               reject(false);
             }
           }).catch((err) => {

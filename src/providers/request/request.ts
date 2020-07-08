@@ -40,6 +40,7 @@ export class RequestProvider {
     }else {
       pParams.data = { method: pMethod }; 
     }
+    
     this.dataWakConnected.params.push(pParams.uri);
     this.dataWakConnected.params.push(pParams.data);
     const jsonPlain = JSON.stringify(this.dataWakConnected);
@@ -80,13 +81,12 @@ export class RequestProvider {
     options = options || {};
     options = pParams.requestOptions ? Object.assign(options, pParams.requestOptions) : this.headers;
     pParams.responseType = pParams.responseType ? pParams.responseType : 'json';
-
     if(pParams.externalEndpoint){
       return new Promise((resolve, reject) => {
         this.http.get(pUri, { withCredentials: true, headers: options, params: pParams.queryParams, responseType: pParams.responseType })
-          .subscribe(
-            response => response ? resolve(response) : reject({ status: 204, error: null }),
-            err => {
+        .subscribe(          
+          response => response ? resolve(response) : reject({ status: 204, error: null }),
+            err => {              
               this.sendError(err);
               reject(err);
             });

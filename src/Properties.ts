@@ -13,10 +13,12 @@ export class Properties {
             case 'staging':
                 return 'http://192.168.1.40:19899';
             case 'prod':
-                return 'http://190.217.118.237';
+                return 'http://ftcaprob.foxtelecolombia.com';
+                //return 'http://190.217.118.237:80';
             default:
-                return 'http://190.217.118.237';
-                //return 'http://168.195.202.3:1975';                
+              return 'http://ftcaprob.foxtelecolombia.com';
+                //return 'http://190.217.118.237:80';
+                //return 'http://168.195.202.3:1975';
         }
     }
 }

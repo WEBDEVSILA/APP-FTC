@@ -30,15 +30,15 @@ export class HomePage {
     public auth: AuthenticationProvider
   ) {
     this.loaded = false;
-    this.userName = '';
+    this.userName = '';    
     auth.onAuthenticate.subscribe(
-      () => {
+      () => {  
         this.showBanner = auth.currentUser ? true : false;
-        this.showLogin = auth.currentUser ? false : true;
-        if(!this.showLogin) {
+        this.showLogin = auth.currentUser ? false : true;                
+        if(!this.showLogin) {          
           this.isLogged = true;
           this.menuComponent.generateMenu();
-          this.userName = auth.currentUser.fullName;
+          this.userName = auth.currentUser.fullName;                    
         }
       },
       err => {
@@ -65,7 +65,7 @@ export class HomePage {
   onViewChange(event){
     this.showLogin = !(event === 'closeLogin');
     if(!this.showLogin) {
-      this.isLogged = true;
+      this.isLogged = true;      
     }
   }
 

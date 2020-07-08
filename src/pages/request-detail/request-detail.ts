@@ -7,6 +7,7 @@ import { PushNotificationsProvider } from '../../providers/push-notifications/pu
 import { DocumentViewer } from '@ionic-native/document-viewer';
 import { File } from '@ionic-native/file';
 
+
 /**
  * Generated class for the RequestDetailPage page.
  *
@@ -27,7 +28,8 @@ export class RequestDetailPage {
   typeToSendNotify: string;
   notes: string;
   docs: Array<any>;
-  
+  fileUrl;
+
   constructor(
     private platform: Platform,
     private document: DocumentViewer,
@@ -52,7 +54,7 @@ export class RequestDetailPage {
     this.approveRequestService.getReviewersByReferenceNumber(this.request.referenceNumber)
     .then(reviewersList => { this.reviewers = reviewersList })
     .catch(err => { this.reviewers = []} );
-    
+
     this.approveRequestService.getFiles(this.request.id).then((docs) => {
       this.docs = docs;
     });
@@ -86,7 +88,7 @@ export class RequestDetailPage {
         if (!reviewer.approve){
           isInvalid = true;
         }
-      } 
+      }
     });
 
     return isInvalid;
@@ -126,7 +128,7 @@ export class RequestDetailPage {
           subTitle: 'hemos tenido problemas. Intentaló nuevamente.'
         });
       })
-    } 
+    }
   }
 
   notifyComment() {
@@ -147,27 +149,27 @@ export class RequestDetailPage {
   downloadFile(docRef) {
     const loaderef = this.interviews.presentLoading();
     this.approveRequestService.downloadFile(docRef.id).then((blob) => {
-      if(this.platform.is('ios') || this.platform.is('android')){        
+      if(this.platform.is('ios') || this.platform.is('android')){
         this.file.writeFile(this.file.dataDirectory, docRef.id+"file.pdf", blob, {replace: true}).then(c => {
-          
           this.document.viewDocument(this.file.dataDirectory+ docRef.id + "file.pdf", "application/pdf",
           {print: {enabled: true}, bookmarks: {enabled: true}, email: {enabled: true}, title: document.title});
           loaderef.dismiss();
         });
+        const blobUrl = window.URL.createObjectURL(blob);
+        window.open(blobUrl,'_system ','location=yes');
+        loaderef.dismiss();
       }else{
         const blobUrl = window.URL.createObjectURL(blob);
-        //console.log(blobUrl);
-        const a = document.getElementById('donwloadLink') as HTMLAnchorElement;        
+        const a = document.getElementById('donwloadLink') as HTMLAnchorElement;
         a.href = blobUrl;
         a.download = docRef.name;
-        // a.click();
-        // window.URL.revokeObjectURL(blobUrl);
+        //a.click();
+        //window.URL.revokeObjectURL(blobUrl);
         window.open(blobUrl,'_system ','location=yes');
         loaderef.dismiss();
       }
     });
   }
 
-  
 
 }

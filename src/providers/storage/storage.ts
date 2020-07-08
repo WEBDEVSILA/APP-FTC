@@ -17,7 +17,7 @@ export class StorageProvider {
   saveUser(pUser,shouldEncrypt = true){
     if (!pUser) {
       localStorage.removeItem('u');
-    } else {
+    } else {      
       if (shouldEncrypt) {
         pUser = JSON.stringify(pUser);
         localStorage.setItem('u', btoa(pUser));

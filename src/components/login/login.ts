@@ -53,19 +53,20 @@ export class LoginComponent {
       const loader = this.interView.presentLoading();
       this.encrypt = this.password.length < 16;
       this.auth.login(this.userName, this.password, this.encrypt)
-      .then((pwdEncrypt)=> {
-        this.storage.saveUser({userName: this.userName, password: pwdEncrypt});
-        this.push.saveRegisterDevice(this.auth.currentUser.userName);
-        loader.dismiss();
-        this.complete.emit('closeLogin');
+      .then((pwdEncrypt)=> {                
+        this.storage.saveUser({userName: this.userName, password: pwdEncrypt});                
+        this.complete.emit('closeLogin');        
+        //this.push.saveRegisterDevice(this.auth.currentUser.userName);        
+        loader.dismiss();        
       })
       .catch(()=> {
-        loader.dismiss;
-        loader.onDidDismiss(() =>{
-          this.presentAlert()
+        
+        loader.dismiss();
+        loader.onDidDismiss(() =>{          
+          this.presentAlert();
         });
       });
-    }else {
+    }else {      
       this.presentAlert();
     }
   }
@@ -119,6 +120,7 @@ export class LoginComponent {
 
     this.interView.openAlert(args);
   }
+
   openPP(){
     this.navCtrl.push(PrivacyPolicyPage);
   }
